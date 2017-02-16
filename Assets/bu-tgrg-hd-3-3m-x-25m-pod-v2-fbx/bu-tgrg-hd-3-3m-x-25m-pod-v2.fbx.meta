@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: b42562e71ff3c964a8ba93f6d47a3a06
+timeCreated: 1485753446
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 1000 door frame_001
+    100002: 1000 door frame_002
+    100004: 1000 window_001
+    100006: 1000mm single door frame_001
+    100008: base_001
+    100010: //RootNode
+    100012: ceiling_001
+    100014: cladding_001
+    100016: Component#10_001
+    100018: Component#11_001
+    100020: Component#11_002
+    100022: Component#11_003
+    100024: Component#1_001
+    100026: Component#2_001
+    100028: Component#3_001
+    100030: Component#3_002
+    100032: Component#3_003
+    100034: Component#4_001
+    100036: Component#6_001
+    100038: Component#9_001
+    100040: Component#9_002
+    100042: door
+    100044: door handle_001
+    100046: door handle_002
+    100048: door handle_003
+    100050: door handle_004
+    100052: floor_001
+    100054: Layer0_001
+    100056: Layer0_002
+    100058: light1_001
+    100060: light2_001
+    100062: roof_001
+    100064: trim_001
+    100066: walls_001
+    400000: 1000 door frame_001
+    400002: 1000 door frame_002
+    400004: 1000 window_001
+    400006: 1000mm single door frame_001
+    400008: base_001
+    400010: //RootNode
+    400012: ceiling_001
+    400014: cladding_001
+    400016: Component#10_001
+    400018: Component#11_001
+    400020: Component#11_002
+    400022: Component#11_003
+    400024: Component#1_001
+    400026: Component#2_001
+    400028: Component#3_001
+    400030: Component#3_002
+    400032: Component#3_003
+    400034: Component#4_001
+    400036: Component#6_001
+    400038: Component#9_001
+    400040: Component#9_002
+    400042: door
+    400044: door handle_001
+    400046: door handle_002
+    400048: door handle_003
+    400050: door handle_004
+    400052: floor_001
+    400054: Layer0_001
+    400056: Layer0_002
+    400058: light1_001
+    400060: light2_001
+    400062: roof_001
+    400064: trim_001
+    400066: walls_001
+    2300000: 1000 door frame_001
+    2300002: 1000 door frame_002
+    2300004: 1000 window_001
+    2300006: 1000mm single door frame_001
+    2300008: base_001
+    2300010: ceiling_001
+    2300012: cladding_001
+    2300014: Component#10_001
+    2300016: Component#11_001
+    2300018: Component#11_002
+    2300020: Component#11_003
+    2300022: Component#1_001
+    2300024: Component#2_001
+    2300026: Component#3_001
+    2300028: Component#3_002
+    2300030: Component#3_003
+    2300032: Component#4_001
+    2300034: Component#6_001
+    2300036: Component#9_001
+    2300038: Component#9_002
+    2300040: door handle_001
+    2300042: door handle_002
+    2300044: door handle_003
+    2300046: door handle_004
+    2300048: floor_001
+    2300050: Layer0_001
+    2300052: light1_001
+    2300054: light2_001
+    2300056: roof_001
+    2300058: trim_001
+    2300060: walls_001
+    3300000: 1000 door frame_001
+    3300002: 1000 door frame_002
+    3300004: 1000 window_001
+    3300006: 1000mm single door frame_001
+    3300008: base_001
+    3300010: ceiling_001
+    3300012: cladding_001
+    3300014: Component#10_001
+    3300016: Component#11_001
+    3300018: Component#11_002
+    3300020: Component#11_003
+    3300022: Component#1_001
+    3300024: Component#2_001
+    3300026: Component#3_001
+    3300028: Component#3_002
+    3300030: Component#3_003
+    3300032: Component#4_001
+    3300034: Component#6_001
+    3300036: Component#9_001
+    3300038: Component#9_002
+    3300040: door handle_001
+    3300042: door handle_002
+    3300044: door handle_003
+    3300046: door handle_004
+    3300048: floor_001
+    3300050: Layer0_001
+    3300052: light1_001
+    3300054: light2_001
+    3300056: roof_001
+    3300058: trim_001
+    3300060: walls_001
+    4300000: floor_001
+    4300002: Component#6_001
+    4300004: trim_001
+    4300006: Layer0_001
+    4300008: 1000 door frame_002
+    4300010: Component#1_001
+    4300012: 1000 door frame_001
+    4300014: cladding_001
+    4300016: Component#3_001
+    4300018: Component#4_001
+    4300020: door handle_002
+    4300022: base_001
+    4300024: door handle_001
+    4300026: Component#9_002
+    4300028: Component#11_002
+    4300030: Component#11_003
+    4300032: Component#11_001
+    4300034: door handle_003
+    4300036: door handle_004
+    4300038: Component#10_001
+    4300040: Component#9_001
+    4300042: ceiling_001
+    4300044: roof_001
+    4300046: light2_001
+    4300048: Component#2_001
+    4300050: 1000 window_001
+    4300052: walls_001
+    4300054: light1_001
+    4300056: 1000mm single door frame_001
+    4300058: Component#3_002
+    4300060: Component#3_003
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
