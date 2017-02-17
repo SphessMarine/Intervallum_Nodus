@@ -2,46 +2,41 @@
 
 public class Mover : MonoBehaviour
 {
+   public Rigidbody rb;
+   public float speed = 1000.0f;
+   public float jumpSpeed = 10000.0f;
+   public bool isGrounded = false;
 
-    public Rigidbody rb;
-    public float speed = 1000.0f;
-    public float jumpSpeed = 1000.0f;
-    public bool isGrounded = false;
-    // public bool isColliding = false;
+   // Update is called once per frame
+   void Update()
+   {
+       //MOVEMENT
+       if (Input.GetKey(KeyCode.W) && rb.velocity.magnitude < 100.0f)
+       {
+           rb.AddForce(transform.forward * speed);
+       }
 
-    // Update is called once per frame
+       if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < 100.0f)
+       {
+           rb.AddForce(transform.forward * -speed);
+       }
 
-    void Update()
-    {
+       if (Input.GetKey(KeyCode.A) && rb.velocity.magnitude < 100.0f)
+       {
+           rb.AddForce(transform.right * -speed);
+       }
 
-        //MOVEMENT
-        if (Input.GetKey(KeyCode.W) && rb.velocity.magnitude < 100.0f)
-        {
-            rb.AddForce(transform.forward * speed);
-        }
+       if (Input.GetKey(KeyCode.D) && rb.velocity.magnitude < 100.0f)
+       {
+           rb.AddForce(transform.right * speed);
+       }
 
-        if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < 100.0f)
-        {
-            rb.AddForce(transform.forward * -speed);
-        }
-
-        if (Input.GetKey(KeyCode.A) && rb.velocity.magnitude < 100.0f)
-        {
-            rb.AddForce(transform.right * -speed);
-        }
-
-        if (Input.GetKey(KeyCode.D) && rb.velocity.magnitude < 100.0f)
-        {
-            rb.AddForce(transform.right * speed);
-        }
-
-        //JUMPING
-        if (Input.GetButtonDown("Fire1") && isGrounded == true)
-        {
-            rb.AddForce(transform.up * jumpSpeed);
-        }
-
-    }
+       //JUMPING
+       if (Input.GetKey(KeyCode.Space) && isGrounded == true)
+       {
+           rb.AddForce(transform.up * jumpSpeed);
+       }
+   }
 
     void OnCollisionStay(Collision other)
     {
@@ -58,4 +53,5 @@ public class Mover : MonoBehaviour
             isGrounded = false;
         }
     }
+
 }
