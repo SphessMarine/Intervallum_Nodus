@@ -3,12 +3,6 @@
 public class SwitchInteraction : MonoBehaviour
 {
     private bool isColliding = false;
-
-    // Use this for initialization
-    void Start ()
-    {
-		// Empty
-	}
 	
 	// Update is called once per frame
 	void Update ()

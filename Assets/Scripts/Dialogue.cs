@@ -4,26 +4,21 @@ using UnityEngine.UI;
 public class Dialogue : MonoBehaviour
 {
 
-    public GameObject dText;
-    public Text dialogueText;
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("switch"))
-        {
-            dText.SetActive(true);
-            dialogueText.text = "Press E to Turn Lights On/Off";
-        }
-        if (other.gameObject.CompareTag("start"))
-        {
-            dText.SetActive(true);
-            dialogueText.text = "Figure out how to turn the lights back on.";
-        }
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        dText.SetActive(false);
-    }
+   public GameObject dText;
+   public Text dialogueText;
+   
+   void OnTriggerEnter(Collider other)
+   {
+      if (other.gameObject.GetComponent<DialogueTrigger>())
+      {
+         dText.SetActive(true);
+         dialogueText.text = other.gameObject.GetComponent<DialogueTrigger>().TriggerText;
+      }
+   }
+   
+   void OnTriggerExit(Collider other)
+   {
+      dText.SetActive(false);
+   }
 
 }
