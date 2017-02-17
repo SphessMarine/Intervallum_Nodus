@@ -107,15 +107,8 @@ public class Dialogue : MonoBehaviour
          dialogueText.color = cText;
          yield return new WaitForEndOfFrame();
       }
-      if (!spawn)
-      {
-         dText.SetActive(false);
-         curAlpha = 0.0f;
-      }
-      else
-      {
-         curAlpha = 1.0f;
-      }
+      curAlpha = spawn ? 1.0f : 0.0f;
+      dText.SetActive(spawn);
       yield return null;
    }
 
