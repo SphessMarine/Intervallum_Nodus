@@ -65,8 +65,8 @@ public class Dialogue : MonoBehaviour
       // Set our conditional
       runCoroutine = true;
       // Reset color to set with the minAlpha
-      c = new Color(0.0f, 0.0f, 0.0f, curAlpha);
-      cText = new Color(1.0f, 1.0f, 1.0f, curAlpha);
+      c.a = curAlpha;
+      cText.a = curAlpha;
       // Set dText object's color to our new color
       dText.GetComponent<Image>().color = c;
       dialogueText.color = cText;
@@ -100,8 +100,8 @@ public class Dialogue : MonoBehaviour
                runCoroutine = false;
             }
          }
-         c = new Color(0.0f, 0.0f, 0.0f, curAlpha);
-         cText = new Color(1.0f, 1.0f, 1.0f, curAlpha);
+         c.a = curAlpha;
+         cText.a = curAlpha;
          // Set dText color to new color
          dText.GetComponent<Image>().color = c;
          dialogueText.color = cText;
