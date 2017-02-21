@@ -156,11 +156,11 @@ namespace MasterFunctions
          {
             case ItemKey.ITEM_DOOR_KEY:
                doorKeyCount++;
-               // Update UI
+               isDirty = true;
                break;
             case ItemKey.ITEM_SWITCHBOX_KEY:
                switchboxKeyCount++;
-               // Update UI
+               isDirty = true;
                break;
             case ItemKey.ITEM_FLASHLIGHT:
             case ItemKey.ITEM_GLOWSTICK:
@@ -170,6 +170,7 @@ namespace MasterFunctions
                break;
          }
          isDirty = true;
+         Debug.Log(doorKeyCount);
       }
 
       /// <summary>
@@ -183,7 +184,7 @@ namespace MasterFunctions
          {
             case ItemKey.ITEM_FLASHLIGHT:
                flashlightGameObject.transform.SetParent(playerGameObject.transform);
-               flashlightGameObject.transform.localPosition = new Vector3(0.4f, 0.0f, 0.0f);
+               flashlightGameObject.transform.localPosition = new Vector3(4.5f, -0.18f, -4.2f);
                flashlightGameObject.transform.eulerAngles = playerGameObject.transform.eulerAngles;
                break;
             case ItemKey.ITEM_GLOWSTICK:
@@ -286,9 +287,9 @@ namespace MasterFunctions
          {
             // Update UI
             healthUIText.text = playerHealth + "/" + playerMaxHealthString;
-            switchboxKeysUIText.text = switchboxKeyCount.ToString();
-            doorKeysUIText.text = doorKeyCount.ToString();
-            isDirty = false;
+            switchboxKeysUIText.text = Convert.ToString(switchboxKeyCount);
+            doorKeysUIText.text = Convert.ToString(doorKeyCount);
+
          }
       }
 

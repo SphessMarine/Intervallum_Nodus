@@ -29,13 +29,16 @@ public class ItemScript : Item
    protected override void OnTriggerEnter(Collider other)
    {
       base.OnTriggerEnter(other);
-      if (spawnDialogue)
+      if (other.gameObject.CompareTag(Master.GetTag(TagKey.TAG_PLAYER)))
       {
-         Master.ShowDialogue(dialogueToShow);
-      }
-      if (isKey)
-      {
-         Destroy(gameObject);
+         if (spawnDialogue)
+         {
+            Master.ShowDialogue(dialogueToShow);
+         }
+         if (isKey)
+         {
+            Destroy(gameObject);
+         }
       }
    }
 
