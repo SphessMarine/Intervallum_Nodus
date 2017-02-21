@@ -9,7 +9,7 @@ public class SwitchInteraction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E) && isColliding)
         {
-            PointLightController.SwitchLight();
+            // PointLightController.SwitchLight();
         }
     }
 

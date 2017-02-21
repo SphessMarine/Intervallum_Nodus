@@ -3,59 +3,36 @@ using UnityEngine;
 
 public class PointLightController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject pointLight01 = null;
+   [SerializeField]
+   private List<GameObject> lightList = new List<GameObject>();
 
-    [SerializeField]
-    private GameObject pointLight02 = null;
+   private static bool lightsOff = true;
 
-    [SerializeField]
-    private GameObject pointLight03 = null;
+   // Use this for initialization
+   void Start ()
+   {
+       SwitchLight();
+   }
 
-    [SerializeField]
-    private GameObject pointLight04 = null;
-
-    [SerializeField]
-    private GameObject pointLight05 = null;
-
-    [SerializeField]
-    private GameObject pointLight06 = null;
-
-    private static List<GameObject> lightList = new List<GameObject>();
-
-    private static bool lightsOff = true;
-
-    // Use this for initialization
-    void Start ()
-    {
-        lightList.Add(pointLight01);
-        lightList.Add(pointLight02);
-        lightList.Add(pointLight03);
-        lightList.Add(pointLight04);
-        lightList.Add(pointLight05);
-        lightList.Add(pointLight06);
-        SwitchLight();
-    }
-	
 	// Update is called once per frame
 	void Update ()
-    {
-		// Empty
+   {
+      // Empty
 	}
 
-    /// <summary>
-    /// Turns lights on and off
-    /// </summary>
-    /// <param name="lightSwitch"></param>
-    public static void SwitchLight()
-    {
-       foreach (GameObject obj in lightList)
-       {
-            if (obj)
-            {
-               obj.SetActive(!lightsOff);
-            }
-       }
-        lightsOff = !lightsOff;
-    }
+   /// <summary>
+   /// Turns lights on and off
+   /// </summary>
+   /// <param name="lightSwitch"></param>
+   public void SwitchLight()
+   {
+      foreach (GameObject obj in lightList)
+      {
+           if (obj)
+           {
+              obj.SetActive(!lightsOff);
+           }
+      }
+      lightsOff = !lightsOff;
+   }
 }
