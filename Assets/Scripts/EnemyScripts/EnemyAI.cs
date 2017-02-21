@@ -25,8 +25,11 @@ public class EnemyAI : MonoBehaviour
    /// <param name="other"></param>
    protected virtual void OnTriggerEnter(Collider other)
    {
-      damagingPlayer = true;
-      StartCoroutine(DamageOverTime());
+      if (other.CompareTag(Master.GetTag(TagKey.TAG_PLAYER)))
+      {
+         damagingPlayer = true;
+         StartCoroutine(DamageOverTime());
+      }
    }
    
    /// <summary>
@@ -35,8 +38,11 @@ public class EnemyAI : MonoBehaviour
    /// <param name="other"></param>
    protected virtual void OnTriggerExit(Collider other)
    {
-      damagingPlayer = false;
-      StopCoroutine(DamageOverTime());
+      if (other.CompareTag(Master.GetTag(TagKey.TAG_PLAYER)))
+      {
+         damagingPlayer = false;
+         StopCoroutine(DamageOverTime());
+      }
    }
 
    /// <summary>
