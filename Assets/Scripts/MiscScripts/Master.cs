@@ -62,8 +62,8 @@ namespace MasterFunctions
       private static GameObject playerGameObject = null;
       private static GameObject flashlightGameObject = null;
       public static bool itemHeld = false;
-      private static int doorKeyCount = 0;
-      private static int switchboxKeyCount = 0;
+      public static int doorKeyCount = 0;
+      public static int switchboxKeyCount = 0;
       public static ItemKey currentHeldItem = ItemKey.ITEM_NONE;
       private static Dialogue dialogueScript = null;
 
