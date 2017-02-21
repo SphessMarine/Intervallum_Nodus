@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
    public GameObject dText = null;
    public Text dialogueText = null;
    private bool runCoroutine = false;
+   private bool spawnTextRunning = false;
+   private string externalText = "";
    private bool spawn = false;
    const float maxAlpha = 1.0f;
    const float minAlpha = 0.0f;
@@ -31,6 +33,10 @@ public class Dialogue : MonoBehaviour
    {
       if (other.gameObject.GetComponent<DialogueTrigger>())
       {
+         if (spawnTextRunning)
+         {
+            StopCoroutine(SpawnExternalText());
+         }
          dText.SetActive(true);
          dialogueText.text = other.gameObject.GetComponent<DialogueTrigger>().TriggerText;
          StopCoroutine(SpawnText());
@@ -55,6 +61,34 @@ public class Dialogue : MonoBehaviour
    }
 
    #endregion
+
+   public void ShowMessage(string text)
+   {
+      externalText = text;
+      StartCoroutine(SpawnExternalText());
+   }
+
+   /// <summary>
+   /// Spawns text from an external source
+   /// </summary>
+   /// <param name="value"></param>
+   /// <param name="text"></param>
+   /// <returns></returns>
+   private IEnumerator SpawnExternalText()
+   {
+      spawnTextRunning = true;
+      dText.SetActive(true);
+      dialogueText.text = externalText;
+      StopCoroutine(SpawnText());
+      spawn = true;
+      StartCoroutine(SpawnText());
+      yield return new WaitForSeconds(5.0f);
+      StopCoroutine(SpawnText());
+      spawn = false;
+      StartCoroutine(SpawnText());
+      spawnTextRunning = false;
+      yield return null;
+   }
 
    /// <summary>
    /// Spawns the text in a spooky fashion.
