@@ -1,18 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using MasterFunctions;
+using System.Collections;
 
-public class EnemyAI : MonoBehaviour {
+public class EnemyAI : MonoBehaviour
+{
 
-    public Transform player;
-    public float enemySpeed = 2.0f;
+   protected bool damagingPlayer = false;
+   [SerializeField]
+   protected int damage = 1;
+   [SerializeField]
+   protected float gracePeriod = 1.0f;
 
+   /// <summary>
+   /// Initialize
+   /// </summary>
+   protected virtual void Start()
+   {
+      gameObject.tag = Master.GetTag(TagKey.TAG_ENEMY);
+   }
 
-    void Update()
-    {
+   /// <summary>
+   /// Raises the OnTriggerEnter event.
+   /// </summary>
+   /// <param name="other"></param>
+   protected virtual void OnTriggerEnter(Collider other)
+   {
+      damagingPlayer = true;
+      StartCoroutine(DamageOverTime());
+   }
+   
+   /// <summary>
+   /// Raise OnTriggerExit event.
+   /// </summary>
+   /// <param name="other"></param>
+   protected virtual void OnTriggerExit(Collider other)
+   {
+      damagingPlayer = false;
+      StopCoroutine(DamageOverTime());
+   }
 
-        transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-        // GetComponent<Rigidbody>().AddForce(transform.forward * enemySpeed);
-        transform.Translate(0.0f, 0.0f, enemySpeed * Time.deltaTime);
-    }
+   /// <summary>
+   /// Damages the player over time
+   /// </summary>
+   /// <returns></returns>
+   protected IEnumerator DamageOverTime()
+   {
+      while (damagingPlayer)
+      {
+         Master.DamagePlayer(damage);
+         yield return new WaitForSeconds(gracePeriod);
+      }
+      yield return null;
+   }
+
 }

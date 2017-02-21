@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MasterFunctions
 {
@@ -61,10 +62,23 @@ namespace MasterFunctions
       private static GameObject playerGameObject = null;
       private static GameObject flashlightGameObject = null;
       public static bool itemHeld = false;
-      public static int doorKeyCount = 0;
-      public static int switchboxKeyCount = 0;
+      private static int doorKeyCount = 0;
+      private static int switchboxKeyCount = 0;
       public static ItemKey currentHeldItem = ItemKey.ITEM_NONE;
-      public static Dialogue dialogueScript = null;
+      private static Dialogue dialogueScript = null;
+
+      #endregion
+
+      #region UIVariables
+
+      private static GameObject healthUI = null;
+      private static GameObject switchboxKeysUI = null;
+      private static GameObject doorKeysUI = null;
+      private static bool isDirty = false;
+      private static Text healthUIText = null;
+      private static Text switchboxKeysUIText = null;
+      private static Text doorKeysUIText = null;
+      private static string playerMaxHealthString = "";
 
       #endregion
 
@@ -90,6 +104,7 @@ namespace MasterFunctions
          BuildDictionary();
 
          GrabReferences();
+         isDirty = true;
       }
 
       private void GrabReferences()
@@ -97,10 +112,13 @@ namespace MasterFunctions
          playerGameObject = GameObject.Find("Player");
          flashlightGameObject = GameObject.Find("Flashlight");
          dialogueScript = playerGameObject.GetComponent<Dialogue>();
-         if (!(playerGameObject && flashlightGameObject))
-         {
-            Debug.LogError("Player or Flashlight game object reference missing! Call Scawt to fix.");
-         }
+         healthUI = GameObject.Find("UIHealth");
+         switchboxKeysUI = GameObject.Find("UISwitchBoxKeys");
+         doorKeysUI = GameObject.Find("UIKeys");
+         healthUIText = healthUI.GetComponent<Text>();
+         switchboxKeysUIText = switchboxKeysUI.GetComponent<Text>();
+         doorKeysUIText = doorKeysUI.GetComponent<Text>();
+         playerMaxHealthString = playerHealth.ToString();
       }
    
       private void BuildDictionary()
@@ -114,6 +132,8 @@ namespace MasterFunctions
       #endregion
 
       #region HelperFunctions
+
+      #region ItemFunctions
 
       /// <summary>
       /// Returns string associated with TagKey enum via Dictionary
@@ -149,6 +169,7 @@ namespace MasterFunctions
             default:
                break;
          }
+         isDirty = true;
       }
 
       /// <summary>
@@ -216,7 +237,10 @@ namespace MasterFunctions
          {
             Destroy(door);
          }
+         isDirty = true;
       }
+
+      #endregion
 
       /// <summary>
       /// Triggers dialogue box
@@ -227,7 +251,46 @@ namespace MasterFunctions
          dialogueScript.ShowMessage(text);
       }
 
+      #region DamageFunctions
+
+      /// <summary>
+      /// Damages player
+      /// </summary>
+      /// <param name="damage"></param>
+      public static void DamagePlayer(int damage)
+      {
+         playerHealth -= damage;
+         Debug.Log("Player has " + playerHealth + " HP.");
+         if (playerHealth <= 0)
+         {
+            GameOver();
+         }
+         isDirty = true;
+      }
+
+      /// <summary>
+      /// Triggers GameOver screen
+      /// </summary>
+      public static void GameOver()
+      {
+         Debug.Log("Game Over!");
+      }
+
       #endregion
+
+      #endregion
+
+      private void Update()
+      {
+         if (isDirty)
+         {
+            // Update UI
+            healthUIText.text = playerHealth + "/" + playerMaxHealthString;
+            switchboxKeysUIText.text = switchboxKeyCount.ToString();
+            doorKeysUIText.text = doorKeyCount.ToString();
+            isDirty = false;
+         }
+      }
 
    }
 }
