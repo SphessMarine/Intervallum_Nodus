@@ -163,7 +163,7 @@ namespace MasterFunctions
             case ItemKey.ITEM_FLASHLIGHT:
                flashlightGameObject.transform.SetParent(playerGameObject.transform);
                flashlightGameObject.transform.localPosition = new Vector3(0.4f, 0.0f, 0.0f);
-               flashlightGameObject.transform.eulerAngles = new Vector3(0.0f, -1.0f, 0.0f);
+               flashlightGameObject.transform.eulerAngles = playerGameObject.transform.eulerAngles;
                break;
             case ItemKey.ITEM_GLOWSTICK:
                break;
