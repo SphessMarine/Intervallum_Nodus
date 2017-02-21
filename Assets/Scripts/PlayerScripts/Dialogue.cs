@@ -37,14 +37,17 @@ public class Dialogue : MonoBehaviour
          {
             StopCoroutine(SpawnExternalText());
          }
-         dText.SetActive(true);
          dialogueText.text = other.gameObject.GetComponent<DialogueTrigger>().TriggerText;
-         StopCoroutine(SpawnText());
-         spawn = true;
-         StartCoroutine(SpawnText());
+         if (dialogueText.text != string.Empty)
+         {
+            dText.SetActive(true);
+            StopCoroutine(SpawnText());
+            spawn = true;
+            StartCoroutine(SpawnText());
+         }
       }
    }
-   
+
    /// <summary>
    /// Raise OnTriggerExit event.
    /// Despawn dialogue window and reset text
