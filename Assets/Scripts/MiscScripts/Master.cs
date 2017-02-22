@@ -29,6 +29,16 @@ namespace MasterFunctions
       ITEM_SWITCHBOX_KEY
    }
 
+   public enum MenuButton
+   {
+      BUTTON_NOOP = 0,
+      BUTTON_START,
+      BUTTON_CREDITS,
+      BUTTON_INSTRUCTIONS,
+      BUTTON_QUIT,
+      BUTTON_BACK
+   }
+
    #endregion
 
    public class Master : MonoBehaviour
@@ -82,6 +92,19 @@ namespace MasterFunctions
 
       #endregion
 
+      #region MenuVariables
+
+      //private static GameObject StartButton = null;
+      //private static GameObject CreditsButton = null;
+      //private static GameObject InstructionsButton = null;
+      //private static GameObject QuitButton = null;
+      private static GameObject MainMenuGameObject = null;
+      private static GameObject CreditsGameObject = null;
+      private static GameObject InstructionsGameObject = null;
+      private static GameObject BackGameObject = null;
+
+      #endregion
+
       #region Init
 
       /// <summary>
@@ -105,6 +128,7 @@ namespace MasterFunctions
 
          GrabReferences();
          isDirty = true;
+         SpawnMainMenu();
       }
 
       private void GrabReferences()
@@ -119,6 +143,14 @@ namespace MasterFunctions
          switchboxKeysUIText = switchboxKeysUI.GetComponent<Text>();
          doorKeysUIText = doorKeysUI.GetComponent<Text>();
          playerMaxHealthString = playerHealth.ToString();
+         //StartButton = GameObject.Find("StartGameButton");
+         //CreditsButton = GameObject.Find("CreditsButton");
+         //InstructionsButton = GameObject.Find("InstructionsButton");
+         //QuitButton = GameObject.Find("QuitButton");
+         MainMenuGameObject = GameObject.Find("MainMenu");
+         CreditsGameObject = GameObject.Find("CreditsScreen");
+         InstructionsGameObject = GameObject.Find("InstructionsScreen");
+         BackGameObject = GameObject.Find("BackButton");
       }
    
       private void BuildDictionary()
@@ -281,6 +313,69 @@ namespace MasterFunctions
 
       #endregion
 
+      #region MenuFunctions
+
+      public static void ButtonAction(MenuButton but)
+      {
+         switch(but)
+         {
+            case MenuButton.BUTTON_START:
+               StartGame();
+               break;
+            case MenuButton.BUTTON_INSTRUCTIONS:
+               SpawnInstructions();
+               break;
+            case MenuButton.BUTTON_CREDITS:
+               SpawnCredits();
+               break;
+            case MenuButton.BUTTON_QUIT:
+               Application.Quit();
+               break;
+            case MenuButton.BUTTON_BACK:
+               SpawnMainMenu();
+               break;
+         }
+      }
+
+      public static void SpawnMainMenu()
+      {
+         ManagePlayer(false);
+         MainMenuGameObject.SetActive(true);
+         InstructionsGameObject.SetActive(false);
+         CreditsGameObject.SetActive(false);
+         BackGameObject.SetActive(false);
+      }
+
+      private static void SpawnCredits()
+      {
+         ManagePlayer(false);
+         CreditsGameObject.SetActive(true);
+         InstructionsGameObject.SetActive(false);
+         BackGameObject.SetActive(true);
+      }
+
+      private static void SpawnInstructions()
+      {
+         ManagePlayer(false);
+         InstructionsGameObject.SetActive(true);
+         CreditsGameObject.SetActive(false);
+         BackGameObject.SetActive(true);
+      }
+
+      private static void StartGame()
+      {
+         ManagePlayer(true);
+         MainMenuGameObject.SetActive(false);
+      }
+
+      private static void ManagePlayer(bool value)
+      {
+         playerGameObject.GetComponent<Mover>().enabled = value;
+         playerGameObject.GetComponent<Mouselook>().enabled = value;
+      }
+
+      #endregion
+
       private void Update()
       {
          if (isDirty)
@@ -289,7 +384,7 @@ namespace MasterFunctions
             healthUIText.text = playerHealth + "/" + playerMaxHealthString;
             switchboxKeysUIText.text = Convert.ToString(switchboxKeyCount);
             doorKeysUIText.text = Convert.ToString(doorKeyCount);
-
+            isDirty = false;
          }
       }
 
